@@ -20,3 +20,8 @@ Decimal: decimal
 char
 Boolean Type:bool
 String Type:string
+
+//Video:4 String type
+String data type (string) holds text
+escape sequences (\n, \t) control characters within it
+verbatim literals (@"text") include escapes literally.
