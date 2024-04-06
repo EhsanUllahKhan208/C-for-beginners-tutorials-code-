@@ -25,3 +25,10 @@ String Type:string
 String data type (string) holds text
 escape sequences (\n, \t) control characters within it
 verbatim literals (@"text") include escapes literally.
+
+//Video:5 Common operators in C#
++: Addition (e.g., 10 + 5 evaluates to 15)
+-: Subtraction (e.g., 20 - 3 evaluates to 17)
+*: Multiplication (e.g., 4 * 6 evaluates to 24)
+/: Division (e.g., 12 / 3 evaluates to 4, integer division)
+%: Modulo (remainder after division, e.g., 10 % 3 evaluates to 1)
