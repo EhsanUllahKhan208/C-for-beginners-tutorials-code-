@@ -1,18 +1,18 @@
-﻿public class Customer  // Class for customers (reference type)
+public class Customer
 {
     public string Name { get; set; }
     public int Id { get; set; }
-    public Point Location { get; set; }  // Property of type Point struct
+    public Point Location { get; set; }
 
     public Customer(string name, int id, int x, int y)
     {
         Name = name;
         Id = id;
-        Location = new Point { X = x, Y = y };  // Initialize Point struct within constructor
+        Location = new Point { X = x, Y = y };
     }
 }
 
-public struct Point  // Struct for 2D points (value type)
+public struct Point
 {
     public int X { get; set; }
     public int Y { get; set; }
@@ -22,7 +22,6 @@ public class MainProgram
 {
     public static void Main(string[] args)
     {
-        // Create a Customer object with a Point location
         Customer customer1 = new Customer("Alice Smith", 123, 10, 20);
 
         Console.WriteLine($"Customer Name: {customer1.Name}");
