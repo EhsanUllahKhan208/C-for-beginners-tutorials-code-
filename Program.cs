@@ -1,7 +1,14 @@
-﻿namespace v41
+﻿namespace v43
 {
     internal class Program
     {
+        public class InvalidMarksFormatException : Exception
+        {
+            public InvalidMarksFormatException() : base("Invalid format used for marks in the file.") { }
+
+            public InvalidMarksFormatException(string message) : base(message) { }
+        }
+
         static void Main(string[] args)
         {
             try
@@ -16,14 +23,10 @@
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("Error: Marks file not found!");
-                // Re-throw for further handling (optional)
-                // throw new ApplicationException("Error reading marks file!", ex);
             }
-            catch (FormatException ex)
+            catch (InvalidMarksFormatException ex)
             {
-                Console.WriteLine("Error: Invalid marks format in file!");
-                // Re-throw for further handling (optional)
-                // throw new InvalidDataException("Error: Invalid marks format in file!", ex);
+                Console.WriteLine("Error: {0}", ex.Message); // Informative message from custom exception
             }
             catch (InvalidDataException ex)
             {
@@ -46,7 +49,7 @@
                 }
                 catch (FormatException ex)
                 {
-                    Console.WriteLine("Warning: Skipping invalid mark: {0}", markStr);
+                    throw new InvalidMarksFormatException("The value '" + markStr + "' is not a valid mark."); // Wrap FormatException
                 }
             }
 
