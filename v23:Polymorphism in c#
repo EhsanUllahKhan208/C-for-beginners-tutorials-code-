@@ -1,23 +1,24 @@
-﻿public class Employee  // Base class
+public class Employee
 {
     public string Name { get; set; }
-    public virtual double CalculatePay()  // Virtual method for calculating pay (to be overridden)
+
+    public virtual double CalculatePay()
     {
-        return 0.0;  // Base implementation (can be empty or basic calculation)
+        return 0.0;
     }
 }
 
-public class SalariedEmployee : Employee  // Derived class for salaried employees
+public class SalariedEmployee : Employee
 {
     public double Salary { get; set; }
 
     public override double CalculatePay()
     {
-        return Salary / 12.0;  // Monthly salary calculation
+        return Salary / 12.0;
     }
 }
 
-public class HourlyEmployee : Employee  // Derived class for hourly employees
+public class HourlyEmployee : Employee
 {
     public double HourlyWage { get; set; }
     public int HoursWorked { get; set; }
@@ -28,7 +29,7 @@ public class HourlyEmployee : Employee  // Derived class for hourly employees
     }
 }
 
-public class CommissionEmployee : Employee  // Derived class for commission-based employees
+public class CommissionEmployee : Employee
 {
     public double BaseSalary { get; set; }
     public double CommissionRate { get; set; }
@@ -47,7 +48,7 @@ public class MainProgram
         foreach (Employee employee in employees)
         {
             Console.WriteLine("Employee: {0}", employee.Name);
-            Console.WriteLine("Pay: ${0:0.00}", employee.CalculatePay());  // Polymorphism in action
+            Console.WriteLine("Pay: ${0:0.00}", employee.CalculatePay());
         }
     }
 
@@ -61,3 +62,4 @@ public class MainProgram
         ProcessPayroll(employees);
     }
 }
+
