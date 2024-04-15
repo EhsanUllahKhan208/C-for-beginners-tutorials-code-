@@ -1,0 +1,60 @@
+public class Product
+{
+    private string name;
+    private double price;
+    private FileStream fileStream;
+
+    public Product(string name, double price)
+    {
+        this.name = name;
+        this.price = price;
+    }
+
+    public Product(string name, double price, string filePath)
+    {
+        this.name = name;
+        this.price = price;
+        this.fileStream = File.Open(filePath, FileMode.OpenOrCreate);
+    }
+
+    public string GetName()
+    {
+        return this.name;
+    }
+
+    public double GetPrice()
+    {
+        return price;
+    }
+
+    public void DoSomethingWithFile()
+    {
+        if (fileStream != null)
+        {
+            Console.WriteLine("Using file stream for product: " + this.name);
+        }
+    }
+
+    ~Product()
+    {
+        if (fileStream != null)
+        {
+            Console.WriteLine("Closing file stream for product: " + this.name);
+            fileStream.Close();
+        }
+    }
+}
+
+public class MainProgram
+{
+    public static void Main(string[] args)
+    {
+        Product product1 = new Product("T-Shirt", 19.99);
+        Console.WriteLine("Product Name: " + product1.GetName());
+        Console.WriteLine("Product Price: " + product1.GetPrice());
+
+        Product product2 = new Product("Laptop", 799.99, @"C:\data\product_info.txt");
+        product2.DoSomethingWithFile();
+    }
+}
+
